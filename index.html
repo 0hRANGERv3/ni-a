@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ti 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lobster&family=Pacifico&family=Raleway:wght@600&display=swap');
+
+        body {
+            font-family: 'Pacifico', cursive;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            color: #ffffff;
+            overflow: hidden;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .lights {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 10%, rgba(255, 0, 150, 0.4) 50%, rgba(255, 255, 255, 0.1) 90%);
+            animation: glow 10s infinite alternate;
+            z-index: -1;
+        }
+
+        @keyframes glow {
+            0% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1.5); }
+        }
+
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 1s ease-in-out;
+            border: 3px solid rgba(255, 0, 150, 0.6);
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(255, 0, 150, 0.8);
+            padding: 20px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            position: relative;
+            z-index: 10;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        h1 {
+            font-size: 3.5em;
+            font-family: 'Lobster', cursive;
+            text-shadow: 4px 4px 10px rgba(255, 255, 255, 0.7);
+            animation: neonGlow 1.5s infinite alternate;
+            color: #ff3399;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 0, 150, 0.8);
+        }
+
+        @keyframes neonGlow {
+            from { text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 0, 150, 0.8); }
+            to { text-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 25px rgba(255, 0, 150, 1); }
+        }
+
+        p {
+            font-size: 2em;
+            font-family: 'Raleway', sans-serif;
+            max-width: 80%;
+            color: #f8f8f8;
+            text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.5);
+        }
+
+        .arrow {
+            font-size: 3em;
+            cursor: pointer;
+            animation: bounce 1s infinite alternate, glow 1.5s infinite alternate;
+            color: #ff4e50;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(10px); }
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 15px rgba(255, 0, 150, 0.8); }
+            to { text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 25px rgba(255, 0, 150, 1); }
+        }
+
+        .hidden { display: none; }
+
+        button {
+            background: linear-gradient(45deg, #ff416c, #ff4e50);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            cursor: pointer;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0px 5px 15px rgba(255, 78, 80, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 8px 20px rgba(255, 78, 80, 0.6);
+        }
+
+        @keyframes heartsFall {
+            0% { transform: translateY(-100px); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+
+        .heart {
+            position: absolute;
+            animation: heartsFall 5s linear infinite;
+            opacity: 0;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+        }
+
+        /* Varias clases para corazones */
+        .heart1 { color: #ff3399; font-size: 2em; }
+        .heart2 { color: #ff66cc; font-size: 2.5em; }
+        .heart3 { color: #ff99cc; font-size: 3em; }
+        .heart4 { color: #ff0066; font-size: 1.5em; }
+        .heart5 { color: #ffcc99; font-size: 2em; }
+        .heart6 { color: #ff33cc; font-size: 2.5em; }
+        .heart7 { color: #ff416c; font-size: 3em; }
+        .heart8 { color: #ff4e50; font-size: 1.8em; }
+
+        .hearts-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .phrases-container {
+            position: absolute;
+            z-index: 20;
+            color: white;
+            font-size: 3em;
+            font-family: 'Dancing Script', cursive;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 0, 150, 1);
+            opacity: 0;
+            animation: fadeInPhrase 2s ease-in-out;
+            white-space: nowrap;
+        }
+
+        @keyframes fadeInPhrase {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* Ajustamos las posiciones para mantener las frases dentro de la pantalla visible */
+        .top-left { top: 10%; left: 5%; transform: translate(0, 0); }
+        .top-right { top: 10%; right: 5%; transform: translate(0, 0); }
+        .bottom-left { bottom: 10%; left: 5%; transform: translate(0, 0); }
+        .bottom-right { bottom: 10%; right: 5%; transform: translate(0, 0); }
+        .top-center { top: 5%; left: 50%; transform: translateX(-50%); }
+        .bottom-center { bottom: 5%; left: 50%; transform: translateX(-50%); }
+    </style>
+</head>
+<body>
+    <div class="lights"></div>
+
+    <div class="container" id="page1">
+        <h1>✨ Te Adoro, mi niña linda ✨</h1>
+        <p>No sabes lo mucho que te amo. Siempre alegras mis días y los vuelves increíbles.</p>
+        <div class="arrow" onclick="showNext()">⬇</div>
+    </div>
+
+    <div class="container hidden" id="page2">
+        <h1>💖 Por eso te vengo a preguntar... 💖</h1>
+        <h2 style="color: #ff4e50; font-size: 2.5em; text-shadow: 3px 3px 10px rgba(255, 78, 80, 0.5); font-family: 'Lobster', cursive;">¿Quieres ser mi San Valentín? 💘</h2>
+        <button onclick="showFinal()">Sí (No se acepta un no como respuesta) 💖</button>
+    </div>
+
+    <div class="container hidden final" id="finalPage">
+        <h1>✨ Soy muy afortunado de tenerte en mi vida ✨</h1>
+        <p>No sabes lo mucho que te quiero. Eres una de las cosas más lindas que me han pasado y siempre agradeceré al destino por ponerte en mi camino.</p>
+        <p>💖 Te amo, mi princesa linda. Nunca dudes de eso. 💖</p>
+        <audio autoplay loop>
+            <source src="https://voca.ro/1b5dEOmPMpNz" type="audio/mpeg">
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+    </div>
+
+    <div id="phrases" class="hearts-container"></div>
+
+    <script>
+        const phrases = [
+            "Te amo mi princesita",
+            "Mi blanquita linda",
+            "Te adoro mi Joselyn",
+            "Mi linda",
+            "Mi hermosa",
+            "Mi preciosa",
+            "Mi guapa",
+            "Mi bonita",
+            "Mi Niña"
+        ];
+
+        function showNext() {
+            document.getElementById('page1').classList.add('hidden');
+            setTimeout(() => {
+                document.getElementById('page2').classList.remove('hidden');
+            }, 500);
+        }
+
+        function showFinal() {
+            document.getElementById('page2').classList.add('hidden');
+            setTimeout(() => {
+                document.getElementById('finalPage').classList.remove('hidden');
+                showHearts(); // Llamamos a la función de corazones después de que cambia a la tercera parte
+                startPhrases(); // Empezamos a mostrar las frases
+            }, 500);
+        }
+
+        function showHearts() {
+            const heartCount = 100; // Número de corazones
+            const heartsContainer = document.createElement('div');
+            heartsContainer.classList.add('hearts-container');
+            document.body.appendChild(heartsContainer);
+
+            for (let i = 0; i < heartCount; i++) {
+                let heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.classList.add('heart' + (Math.floor(Math.random() * 8) + 1));
+                heart.innerHTML = ['❤️', '💖', '💘', '💕', '💞', '💓'][Math.floor(Math.random() * 6)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = Math.random() * 5 + 5 + 's';
+                heartsContainer.appendChild(heart);
+            }
+        }
+
+        function startPhrases() {
+            let usedPhrases = [];
+
+            function showPhrase() {
+                if (usedPhrases.length === phrases.length) {
+                    usedPhrases = [];
+                }
+                let randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
+                while (usedPhrases.includes(randomPhrase)) {
+                    randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
+                }
+                usedPhrases.push(randomPhrase);
+
+                let randomPos = ['top-left', 'top-right', 'bottom-left', 'bottom-right', 'top-center', 'bottom-center'][Math.floor(Math.random() * 6)];
+                let phraseElement = document.createElement('div');
+                phraseElement.classList.add('phrases-container', randomPos);
+                phraseElement.innerHTML = randomPhrase;
+                document.getElementById('phrases').appendChild(phraseElement);
+
+                setTimeout(() => {
+                    phraseElement.style.opacity = 0;
+                }, 3000);
+            }
+
+            setInterval(showPhrase, 4000); // Cambiar cada 4 segundos
+        }
+    </script>
+</body>
+</html>
